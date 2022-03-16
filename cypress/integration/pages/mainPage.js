@@ -9,7 +9,7 @@ class pageExample {
   }
 
   login() {
-    cy.intercept("**/customers/**").as("loginReq");
+    cy.intercept("**/customers/**").as("loginReq"); //Agarro una url que contenta /customers/ y la guardo en un alias (Variable) para usarla en un futuro
     cy.get('[name="username"]').type("rodrisantone");
     cy.get('[name="password"]').type("rodrisantucho");
     cy.get('[value="Log In"]').click();
@@ -37,7 +37,7 @@ class pageExample {
     cy.get("select").first().select(type);
   }
   openNewAccount() {
-    cy.wait("@loginReq");
+    cy.wait("@loginReq"); //puedo seguir usando el alias
     cy.get("#rightPanel > div > div > form > div > input")
       .trigger("mouseover")
       .click();
