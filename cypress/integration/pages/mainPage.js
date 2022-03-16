@@ -34,11 +34,18 @@ class pageExample {
       .should("contain", "Open New Account");
   }
   selectType(type) {
-    console.log(type);
     cy.get("select").first().select(type);
   }
   openNewAccount() {
-    cy.get('[type="submit"]').click();
+    cy.wait("@loginReq");
+    cy.get("#rightPanel > div > div > form > div > input")
+      .trigger("mouseover")
+      .click();
+  }
+  validateNewAccount() {
+    cy.get("#newAccountId").then(function (elem) {
+      expect(parseInt(elem.text())).to.be.an("number");
+    });
   }
 }
 export default pageExample;
