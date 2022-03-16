@@ -1,8 +1,9 @@
+import Utils from "../../support/utils";
+const utils = new Utils();
 class pageExample {
   constructor() {
     this.url = "/";
   }
-
   visit() {
     cy.visit(this.url);
     cy.clearCookies();
@@ -10,8 +11,8 @@ class pageExample {
 
   login() {
     cy.intercept("**/customers/**").as("loginReq"); //Agarro una url que contenta /customers/ y la guardo en un alias (Variable) para usarla en un futuro
-    cy.get('[name="username"]').type("rodrisantone");
-    cy.get('[name="password"]').type("rodrisantucho");
+    cy.get('[name="username"]').type(utils.decode("cm9kcmlzYW50b25l"));
+    cy.get('[name="password"]').type(utils.decode("cm9kcmlzYW50dWNobw=="));
     cy.get('[value="Log In"]').click();
   }
   validateLogin() {
