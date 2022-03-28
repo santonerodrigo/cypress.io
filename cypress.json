@@ -1,3 +1,7 @@
 {
-  "integrationFolder": "cypress/integration/tests"
+  "integrationFolder": "cypress/integration/tests",
+
+  "env": {
+    "apiEndPoint": "https://jsonplaceholder.typicode.com/"
+  }
 }
